@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encabezado Fijo con Bootstrap</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <header class="fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="images/ubicacion.png" alt="Logo" style="width: 30px; height: 30px; margin-right: 10px;">
+                <span>Ubicate</span>
+            </a>
+        </nav>
+    </header>
+
+    <main class="flex-grow-1 d-flex flex-column justify-content-center align-items-center pt-5">
+        <!-- pt-5 agrega espacio superior para evitar que el contenido esté cubierto por el header -->
+        <div class="card p-4 w-75" style="max-width: 600px;">
+            <h2 class="text-center">TÍTULO DEL FORMULARIO</h2>
+            <form id="formPersona">
+                <div class="form-group">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" class="form-control" id="apellido" placeholder="Ingrese su apellido">
+                </div>
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
+                </div>
+                <div class="form-group">
+                    <label for="celular">Celular:</label>
+                    <input type="text" class="form-control" id="celular" placeholder="Ingrese su número de celular">
+                </div>
+                <div class="form-group">
+                    <label>Latitud:</label>
+                    <div class="d-flex">
+                        <input type="number" class="form-control" id="latitudGrados" placeholder="Grados" style="width: 33%;">
+                        <input type="number" class="form-control mx-1" id="latitudMinutos" placeholder="Minutos" style="width: 33%;">
+                        <input type="number" class="form-control" id="latitudSegundos" placeholder="Segundos" style="width: 33%;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Longitud:</label>
+                    <div class="d-flex">
+                        <input type="number" class="form-control" id="longitudGrados" placeholder="Grados" style="width: 33%;">
+                        <input type="number" class="form-control mx-1" id="longitudMinutos" placeholder="Minutos" style="width: 33%;">
+                        <input type="number" class="form-control" id="longitudSegundos" placeholder="Segundos" style="width: 33%;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="disponible">Disponible:</label>
+                    <select class="form-control" id="disponible">
+                        <option value="Sí">Sí</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Guardar</button>
+            </form>
+        </div>
+
+        <div class="table-responsive w-75 mt-4" style="max-width: 600px;">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Apellido</th>
+                        <th>Nombre</th>
+                        <th>Celular</th>
+                        <th>Lat</th>
+                        <th>Log</th>
+                        <th>Disponible</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí se añadirán filas con los datos -->
+                    <tr>
+                        <td colspan="6" class="text-center">Sin datos disponibles</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <div class="container">
+            <p>&copy; 2024 Mi Sitio. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../scripts/app.js"></script>
+    
+</body>
+
+</html>
