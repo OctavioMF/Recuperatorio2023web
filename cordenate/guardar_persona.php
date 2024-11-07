@@ -23,11 +23,10 @@ if ($conexion) {
     $latitud = mysqli_real_escape_string($conexion, $data['latitud']);
     $longitud = mysqli_real_escape_string($conexion, $data['longitud']);
     $disponible = mysqli_real_escape_string($conexion, $data['disponible']);
-	$var_tiempo = mysqli_real_escape_string($conexion, $data['var_tiempo']);
 
     // Preparar y ejecutar la instrucción SQL
     $instruccion = "INSERT INTO personas (apellido, nombre, celular, latitud, longitud, disponible, var_temp) 
-                    VALUES ('$apellido', '$nombre', '$celular', '$latitud', '$longitud', '$disponible', '$var_tiempo')";
+                    VALUES ('$apellido', '$nombre', '$celular', '$latitud', '$longitud', '$disponible', '')";
 
     if (mysqli_query($conexion, $instruccion)) {
         // Devolver JSON de éxito

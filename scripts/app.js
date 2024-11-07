@@ -15,7 +15,6 @@ const cargarApi = async () => {
         const longitudSegundos = document.getElementById('longitudSegundos').value;
         const disponible = document.getElementById('disponible').value;
         
-        const tiempo = new Date();
         const latitud = convertirGrados(latitudGrados, latitudMinutos, latitudSegundos);
         const longitud = convertirGrados(longitudGrados, longitudMinutos, longitudSegundos);
 
@@ -26,8 +25,7 @@ const cargarApi = async () => {
             celular: "54"+celular,
             latitud: latitud,
             longitud: longitud,
-            disponible: disponible,
-            var_tiempo: tiempo 
+            disponible: disponible
         };  
 
         // Enviar los datos a la API
@@ -61,8 +59,8 @@ const cargarApi = async () => {
   };
 
 
-function convertirGrados(grados, minutos, segundos){
-    return -(grados + (1/60)*minutos + (1/3600)*segundos)
+function convertirGrados(grados, minutos, segundos) {
+    return (-1 * (parseFloat(grados) + (parseFloat(minutos) / 60) + (parseFloat(segundos) / 3600))).toFixed(6);
 }
 
 
