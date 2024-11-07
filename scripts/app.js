@@ -55,8 +55,64 @@ const cargarApi = async () => {
             console.error('Error:', error);
             alert('Hubo un error al guardar los datos');
         });
+
+        document.getElementById("formPersona").reset();
+        listarPersonas(); 
     });
   };
+
+
+  const listarPersonas = async () => {
+    try {
+        // Realiza la solicitud GET
+        const response = await fetch('http://localhost/Recuperatorio2023web/cordenate/listar_personas.php');
+        
+        // Verifica si la respuesta es exitosa
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        // Procesa la respuesta como JSON
+        const data = await response.json();
+        
+        // Muestra los datos obtenidos en la consola (para pruebas)
+        console.log('Datos recibidos:', data);
+
+        // Aquí puedes añadir código para actualizar la tabla en la interfaz con los datos recibidos
+        actualizarTabla(data);
+
+    } catch (error) {
+        console.error('Error al listar personas:', error);
+    }
+};
+
+// Función para actualizar la tabla con los datos obtenidos
+const actualizarTabla = (personas) => {
+    const tbody = document.querySelector('table tbody');
+    tbody.innerHTML = ''; // Limpia el contenido actual de la tabla
+
+    if (personas.length === 0) {
+        // Muestra mensaje si no hay datos disponibles
+        tbody.innerHTML = '<tr><td colspan="6" class="text-center">Sin datos disponibles</td></tr>';
+    } else {
+        // Itera sobre cada persona y crea una fila en la tabla
+        personas.forEach(persona => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${persona.apellido}</td>
+                <td>${persona.nombre}</td>
+                <td>${persona.celular}</td>
+                <td>${persona.latitud}</td>
+                <td>${persona.longitud}</td>
+                <td>${persona.disponible}</td>
+            `;
+            tbody.appendChild(row);
+        });
+    }
+};
+
+// Ejecuta listarPersonas cuando la página termina de cargar
+window.onload = listarPersonas;
 
 
 function convertirGrados(grados, minutos, segundos) {
